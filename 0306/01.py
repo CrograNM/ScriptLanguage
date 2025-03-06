@@ -1,9 +1,9 @@
+
+# 실수 자료형
 f = 157.93
 print(type(f))
-
 f = 0.3 + 0.6
 print(f) # not 0.9
-
 print(round(f, 3)) # 반올림, round(변수, 소수점 자리)
 
 # 연산들
@@ -30,3 +30,18 @@ l.reverse()
 print(l)
 print(l[::-1])
 print(l[-1:0:-1]) # 시작(포함) : 끝(미포함) : 간격
+
+# 리스트 컴프리헨션
+ll = [i for i in range(10)]
+print(ll)
+lll = [i for i in range(20) if i%2 == 1] # 조건식 넣을 수도 있다 (홀수만 추가)
+print(lll)
+llll = [i**2 for i in range(1,11)]
+print(llll)
+
+l2d = [[(row, col) for col in range(3)] for row in range(2)] # 2차원 배열도 가능
+print(l2d[:1])
+print(l2d[1:])
+array = [[0]*3 for _ in range(3)]
+# array2 = [[0]*3] * 3 # wrong way
+print(array)
