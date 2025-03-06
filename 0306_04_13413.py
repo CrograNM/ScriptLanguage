@@ -33,4 +33,12 @@ for _ in range(T):
         list_o1.append(o1[i])
         list_o2.append(o2[i])
 
-    pass
+    index_list = list()
+    for i in range(N):
+        if (list_o1[i] != list_o2[i]):
+            index_list.append(i)
+
+    if (len(index_list) % 2 == 0):
+        print(len(index_list) // 2)
+    else:
+        print(len(index_list) // 2 + 1)
