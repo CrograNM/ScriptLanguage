@@ -54,3 +54,9 @@ data2 = 'world'
 #data[1] = 'x' # 문자열은 특정 인덱스의 원소 '교체'가 불가능
 print(data + data2) # 문자열에 연산이 가능
 print(len(data2)) # len 함수 : 리스트 형식 자료형들의 사이즈를 알려줌
+
+# 튜플
+t = 2,3 # 한번 선언된 값 변경 불가, 리스트에 비해 상대적으로 공간효율적
+print(type(t))
+print(t)
+print(t[0:2])
