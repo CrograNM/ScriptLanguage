@@ -45,3 +45,12 @@ print(l2d[1:])
 array = [[0]*3 for _ in range(3)]
 # array2 = [[0]*3] * 3 # wrong way
 print(array)
+
+# 문자열
+data = "Don't you know \"python\""
+print(data)
+
+data = 'hello '
+data2 = 'world'
+print(data + data2) # 문자열에 연산이 가능
+print(len(data2)) # len 함수 : 리스트 형식 자료형들의 사이즈를 알려줌
