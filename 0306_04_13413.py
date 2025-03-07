@@ -49,9 +49,34 @@ for _ in range(T):
     '''
     우선 반복문을 통해 o1의 W,B개수, o2의 W,B개수를 구한다.
     만약 o1 과 o2의 W,B개수가 다른 경우 
-    W,B상태를 바꿔주며 총 횟수를 더한다
+    W,B상태를 바꿔주며 총 횟수를 더한다 
+        부족한 부분이 매꿔지게 된다. 즉, 
+        W7B0 -> W3B4 의 경우 +4번
+        W1B3 -> W3B1 의 경우 +2번
+        
+        ->  W개수를 세고, o1의 W가 부족하면 부족한 만큼(w_o2 - w_o1) +횟수
+            W가 많으면, 많은 만큼(w_o1 - w_o2) +횟수 
+        
     다시 반복문을 통해 두 객체를 검사하고, 다른 값 마다 카운트를 기록한다
     카운트에 //2 한 값을 총 횟수에 더한다
     '''
-    
+    W_o1 = 0
+    B_o1 = 0
+    W_o2 = 0
+    B_o2 = 0
+    for i in range(N):
+        pass
+
+
+    # 상태 변화를 위한 리스트 생성 --> ['W', 'B', 'B', 'W', 'W']
+    list_o1 = list()
+    list_o2 = list()
+    for i in range(N):
+        list_o1.append(o1[i])
+        list_o2.append(o2[i])
+
+    index_list = list()
+    for i in range(N):
+        if (list_o1[i] != list_o2[i]):
+            index_list.append(i)
 
