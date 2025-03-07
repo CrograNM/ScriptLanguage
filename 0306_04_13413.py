@@ -45,21 +45,5 @@ for _ in range(T):
 
     o1 = input()  # string WBBWW
     o2 = input()  # string WBWBW
-    # 문자열은 특정 인덱스의 원소 '교체'가 불가능 : 리스트로 변환
-    # --> ['W', 'B', 'B', 'W', 'W']처럼 바꾸자
 
-    list_o1 = list()
-    list_o2 = list()
-    for i in range(N):
-        list_o1.append(o1[i])
-        list_o2.append(o2[i])
-
-    index_list = list()
-    for i in range(N):
-        if (list_o1[i] != list_o2[i]):
-            index_list.append(i)
-
-    if (len(index_list) % 2 == 0):
-        print(len(index_list) // 2)
-    else:
-        print(len(index_list) // 2 + 1)
+    
