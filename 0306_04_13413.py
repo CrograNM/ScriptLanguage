@@ -15,6 +15,8 @@ for _ in range(T):
     before = input() # 초기 상태
     after = input()  # 목표 상태
 
+    ''' 다른 부분을 검사하며 해당 부분을 저장 후, 저장된 B/W 횟수 중 더 많은 횟수가 정답 '''
+
     count_B = 0
     count_W = 0
 
