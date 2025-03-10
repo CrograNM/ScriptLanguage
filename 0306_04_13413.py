@@ -14,3 +14,13 @@ for _ in range(T):
     N = int(input()) # 오셀로 말의 개수
     before = input() # 초기 상태
     after = input()  # 목표 상태
+
+    count_B = 0
+    count_W = 0
+
+    for i in range(N):
+        if before[i] != after[i]:
+            if before[i] == 'W': count_W+= 1
+            else : count_B += 1
+
+    print(max(count_B, count_W))
