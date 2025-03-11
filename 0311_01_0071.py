@@ -36,4 +36,20 @@ for i in range(len(B)):
             break
     if is_break:
         break
-        
+
+# print(key)
+# print(A_index)
+# print(B_index)
+
+# 출력 단계
+for i in range(len(B)):
+    if i == B_index:
+        print(A)
+    else :
+        text = ''
+        for j in range(len(A)):
+            if j != A_index:
+                text = text + '.'
+            else:
+                text = text + B[i]
+        print(text)
