@@ -22,18 +22,16 @@ A, B = input().split()
 
 A_index = 0
 B_index = 0
-key = ''
 N = len(A)
 M = len(B)
 
-# B 검사 (key, A_index, B_index 검출)
+# A 검사 (key, A_index, B_index 검출)
 is_break = False
-for i in range(M):
-    for j in range(N):
+for j in range(N):
+    for i in range(M):
         if B[i] == A[j]:
             A_index = j
             B_index = i
-            key = B[i]
             is_break = True
             break
     if is_break:
