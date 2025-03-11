@@ -23,11 +23,13 @@ A, B = input().split()
 A_index = 0
 B_index = 0
 key = ''
+N = len(A)
+M = len(B)
 
 # B 검사 (key, A_index, B_index 검출)
-for i in range(len(B)):
-    is_break = False
-    for j in range(len(A)):
+is_break = False
+for i in range(M):
+    for j in range(N):
         if B[i] == A[j]:
             A_index = j
             B_index = i
@@ -42,12 +44,12 @@ for i in range(len(B)):
 # print(B_index)
 
 # 출력 단계
-for i in range(len(B)):
+for i in range(M):
     if i == B_index:
         print(A)
     else :
         text = ''
-        for j in range(len(A)):
+        for j in range(N):
             if j != A_index:
                 text = text + '.'
             else:
