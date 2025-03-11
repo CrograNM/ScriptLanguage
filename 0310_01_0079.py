@@ -14,10 +14,34 @@
 인풋 2개
 find 함수 사용 (문자열 찾기 실패시 -1 반환(탈출에 사용))
 find 는 시작 인덱스를 반환하므로 시작 인덱스 + 문자열의 길이만큼 삭제
-(문자열에서 중간을 삭제시키는 테스트도 해보기)
+    -> 여러 문자열이 검사되면 첫번째 문자열의 시작 인덱스를 반환
+
+간단한 슬라이싱으로 문자 삭제하는 방법
+text = "Hello, World!"
+result = text[:5] + text[6:]
+print(result)  # 출력 결과: Hello World!
 """
 
-str = "hello"
-str2 = "ell"
+"""
+mirkovC4nizCC44
+C4
 
-print(str - str2)
+-> mirkovniz
+"""
+
+# input 으로 문자열과 폭탄을 받는다
+text = input()
+boom = input()
+boom_len = len(boom)
+
+# for문으로 모든 폭탄이 사라질 때 까지 반복한다
+found = 0
+while True:
+    found = text.find(boom)
+    if found == -1:
+        print(text) # 더이상 폭탄이 검사가 안되면 출력 및 탈출
+        break
+
+    # 코드가 종료되지 않았으면 문자 폭발(슬라이싱)
+    temp = text[:found] + text[found+boom_len:]
+    text = temp
