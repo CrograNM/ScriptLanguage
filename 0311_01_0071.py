@@ -16,3 +16,24 @@ B를 검사하여 A 문자열에 포함되는 문자가 있는지 하나하나�
 len(A), len(B)를 사용하고,
 이중 for문을 통해 출력 시작
 """
+
+# input
+A, B = input().split()
+
+A_index = 0
+B_index = 0
+key = ''
+
+# B 검사 (key, A_index, B_index 검출)
+for i in range(len(B)):
+    is_break = False
+    for j in range(len(A)):
+        if B[i] == A[j]:
+            A_index = j
+            B_index = i
+            key = B[i]
+            is_break = True
+            break
+    if is_break:
+        break
+        
