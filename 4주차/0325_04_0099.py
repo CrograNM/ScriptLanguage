@@ -17,6 +17,8 @@
         총 열량    : 기준치가 되는 열량 '이하'
 """
 
+from itertools import combinations
+
 N = int(input())
 foods = [ list(map(int, input().split())) for _ in range(N) ]   # 음식들 2차원 배열 생성
 # foods[i][j] - [i]:Food 종류, [j]:영양소 종류(탄,단,지)
@@ -38,28 +40,43 @@ def isGoodFoods(sum_of_food, standard):
 
 # 경우의 수 검사하기
 res = 0
-# 음식 한개 식단
-for i in range(N):
-    if isGoodFoods(foods[i], std):
-        res += 1
+for i in range(1,4):
+    if i>N:
+        break
+    for food_comb in combinations(foods, i): # i 개를 뽑는 모든 조합
+        sof = [0, 0, 0]  # 탄수화물, 단백질, 지방의 합을 저장할 리스트
+        for food in food_comb:
+            sof[0] += food[0]  # 탄수화물 합
+            sof[1] += food[1]  # 단백질 합
+            sof[2] += food[2]  # 지방 합
 
-# 음식 두개 식단
-for i in range(N):
-    for j in range(i+1, N):
-        if i != j:
-            sof = [foods[i][_] + foods[j][_] for _ in range(len(foods[i]))]
-            if isGoodFoods(sof, std):
-                res += 1
+        # 기준치에 적합한 경우 결과값 증가
+        if isGoodFoods(sof, std):
+            res += 1
 
-# 음식 세개 식단
-for i in range(0, N):
-    for j in range(i+1, N):
-        if i != j:
-            for k in range(j+1, N):
-                if i != k and j != k:
-                    sof = [foods[i][_] + foods[j][_] + foods[k][_] for _ in range(len(foods[i]))]
-                    if isGoodFoods(sof, std):
-                        res += 1
+
+# # 음식 한개 식단
+# for i in range(N):
+#     if isGoodFoods(foods[i], std):
+#         res += 1
+#
+# # 음식 두개 식단
+# for i in range(N):
+#     for j in range(i+1, N):
+#         if i != j:
+#             sof = [foods[i][_] + foods[j][_] for _ in range(len(foods[i]))]
+#             if isGoodFoods(sof, std):
+#                 res += 1
+#
+# # 음식 세개 식단
+# for i in range(0, N):
+#     for j in range(i+1, N):
+#         if i != j:
+#             for k in range(j+1, N):
+#                 if i != k and j != k:
+#                     sof = [foods[i][_] + foods[j][_] + foods[k][_] for _ in range(len(foods[i]))]
+#                     if isGoodFoods(sof, std):
+#                         res += 1
 
 # 출력
 print(res)
