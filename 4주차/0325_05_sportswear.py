@@ -13,21 +13,18 @@
 # lost 리스트가 비거나, reserve 리스트가 비게 되면 결과를 리턴한다.
 
 def solution(n, lost, reserve):
-    answer = n - len(lost)
-    i = 0
-    while True:
-        if len(reserve) == 0 or len(lost) == 0:
-            break
-        if lost[i] - 1 in reserve:
-            reserve.remove(lost[i] - 1)
-            lost.remove(lost[i])
+    # 여벌이 있지만 도난당한 학생을 제외
+    lost_set = set(lost) - set(reserve)
+    reserve_set = set(reserve) - set(lost)
+
+    answer = n - len(lost_set)
+
+    for l in sorted(lost_set):  # 정렬된 상태에서 작은 번호부터 확인
+        if l - 1 in reserve_set:
+            reserve_set.remove(l - 1)
             answer += 1
-        elif lost[i] + 1 in reserve:
-            reserve.remove(lost[i] + 1)
-            lost.remove(lost[i])
+        elif l + 1 in reserve_set:
+            reserve_set.remove(l + 1)
             answer += 1
-        else : # 둘 다 없는 경우 다음 인덱스로 이동
-            i += 1
-            if i >= len(lost):
-                break
+
     return answer
