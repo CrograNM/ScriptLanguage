@@ -15,3 +15,20 @@
 # recursive_func(1)
 
 """ 팩토리얼 구현 예제 """
+def factorial_iterative(N):
+    result = 1
+    
+    # 1부터 N까지의 수를 차례대로 곱하기
+    for i in range(1, N + 1):
+        result *= i
+    return result
+
+def factorial_recursive(N):
+    if N <= 1: # N이 1 이하인 경우 1을 반환
+        return 1
+    # N! = N * (N-1)!를 그대로 코드로 작성
+    return N * factorial_recursive(N - 1)
+
+# 각각의 방식으로 구현한 N! 출력
+print("반복적으로 구현 : ", factorial_iterative(5))
+print("재귀적으로 구현 : ", factorial_recursive(5))
