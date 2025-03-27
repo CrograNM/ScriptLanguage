@@ -25,7 +25,11 @@ std = list(map(int, input().split()))
 #print(std)
 
 res = 0
-for i in range(1,4): # i는 1,2,3
+for i in range(1,4): # i는 1,2,3 
+    
+    if i > N: # N이 3보다 작은 경우도 생각해야함
+        break 
+        
     for food_comb in combinations(foods, i): # food들이 튜플로 묶여서 food_comb에 저장된다.
         # print(food_comb)
         sof = [0, 0, 0]
