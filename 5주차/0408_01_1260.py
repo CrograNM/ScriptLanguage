@@ -12,6 +12,7 @@
     1 2 4 3
     1 2 3 4 (띄어쓰기 있음)
 """
+from collections import deque
 
 N, M, V = map(int, input().split())
 
@@ -29,23 +30,43 @@ for _ in range(M):
 visited_DFS = [0]*(N+1)
 visited_BFS = visited_DFS.copy()
 
-def dfs(v):
+def dfs_rec(v):
     visited_DFS[v] = 1 #방문처리
     print(v, end=' ')
     for i in range(1, N+1):
         if graph[v][i] == 1 and visited_DFS[i] == 0:
             # 미 방문일 경우에 dfs 재귀 발동
-            dfs(i)
+            dfs_rec(i)
 
-def bfs(v):
-    visited_BFS[v] = 1
-    print(v, end=' ')
-    for i in range(1, N+1):
-        if graph[v][i] == 1 and visited_BFS[v] == 0:
-            visited_BFS[v] = 1
+def dfs_stack(v): # LIFO
+    stack = deque([v])
+    while stack:            # 스택이 빌 때까지
+        v = stack.pop()     # 스택의 제일 뒤의 값을 꺼낸다
+        if visited_DFS[v] == 0:
             print(v, end=' ')
-    pass
+            visited_DFS[v] = 1
 
-dfs(V)
+        # 방문할 수 있는 정점이 여러개인 경우에는 정점 번호가 작은 것을 먼저 방문
+        # -> 스택은 거꾸로 나오니까 큰 것부터 검사해서 집어넣기
+        for i in range(N, 0, -1): # i = N, N-1, ..., 1
+            if visited_DFS[i] == 0 and graph[v][i]: # i번 정점을 방문하지 않았고 정점 v와 연결되어 있으면
+                stack.append(i)                     # stack 뒤에 정점 i 추가
+
+
+def bfs(v): # BFS = 큐로 구현
+    queue = deque([v])
+    while queue:
+        v = queue.popleft() # deque의 첫번째 값을 꺼낸다.
+        if visited_BFS[v] == 0:
+            print(v, end=' ')
+            visited_BFS[v] = 1
+
+        for i in range(1, N+1): # i = 1, 2, 3,..., N
+            if visited_BFS[i] == 0 and graph[v][i]: # i번 정점을 방문하지 않았고 정점 v와 연결되어 있으면
+                queue.append(i)                     # queue 뒤에 정점 i 추가
+
+
+#dfs_rec(V)
+dfs_stack(V)
 print()
 bfs(V)
