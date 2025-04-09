@@ -1,6 +1,22 @@
 """
     프로그래머스 - 여행경로 (DFS)
 """
+
+def DFS(port, path, graph, ports, nTickets):
+    i = ports.index(port)
+    for j in range(len(ports)):
+        if graph[i][j] > 0:
+            graph[i][j] -= 1
+            nTickets -= 1
+            port = ports[j]
+            (answer, nTickets) = DFS(port, path + [port], graph, ports, nTickets)
+            if nTickets == 0:
+                return (answer, nTickets)
+            else:
+                graph[i][j] += 1
+                nTickets += 1
+    return (path, nTickets)
+
 def solution(tickets): # [["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]]
     # step 1 : 티켓을 조회해서 중복되지 않는 공항 리스트를 알파벳 순서로 생성한다.
     ports = set() # 공항 집합
@@ -23,8 +39,8 @@ def solution(tickets): # [["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]]
     nTickets = len(tickets) # 티켓의 개수 관리
     port = 'ICN'            # 시작 공항
 
-
-    answer = []
+    answer = [port]
+    (answer, nTickets) = DFS(port, answer, graph, ports, nTickets)
     return answer
 
 
