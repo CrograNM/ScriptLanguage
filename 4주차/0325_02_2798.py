@@ -1,48 +1,44 @@
-n = int(input())
-inputs = []
-for _ in range(n):
-    inputs.append(input().split())
+"""
+    백준 2798 - 블랙잭 문제 (조합 문제)
+    N 장의 카드에 써져 있는 숫자가 주어졌을 때, M을 넘지 않으면서 M에 최대한 가까운 카드 3장의 합을 구해 출력하시오.
 
+    5 21
+    5 6 7 8 9
+    -> 21
+"""
 
-class Node():
-    def __init__(self, item, left, right):
-        self.item = item
-        self.left = left
-        self.right = right
+N,M = map(int, input().split())
+cards = list(map(int, input().split()))
+#print(cards)
+# 위 리스트에서 M에 최대한 가까운 3개 숫자의 합을 출력하라
 
-def preorder(node):
-    print(node.item, end='')
-    if node.left != '.':
-        preorder(tree[node.left])
-    if node.right != '.':
-        preorder(tree[node.right])
+# 모든 3개 숫자 합의 경우를 구하고 가까운close 값을 구한다?
+# N개의 숫자 중 3개씩 묶는 경우의 수는 N * N-1 * N-2
+sums = []
+for i in range(N):
+    n1 = cards[i]
+    for j in range(N):
+        if i != j:
+            n2 = cards[j]
+            for k in range(N):
+                if j != k and i != k:
+                    n3 = cards[k]
+                    sums.append(n1 + n2 + n3)
+# print(sums)
+# print(len(sums))
 
+# 가장 가까운 수 구하기
+close = 0
+for i in range(len(sums)):
+    if M < sums[i]:
+        continue
+    elif M == sums[i]:
+        close = M
+        break
+    # close, M의 차의 절댓값이
+    # sums[i], M의 차의 절댓값 보다 크면 close가 바뀐다.
+    elif abs(M - close) > abs(M - sums[i]):
+        close = sums[i]
 
-def inorder(node):
-    if node.left != '.':
-        inorder(tree[node.left])
-    print(node.item, end='')
-    if node.right != '.':
-        inorder(tree[node.right])
-
-
-def postorder(node):
-    if node.left != '.':
-        postorder(tree[node.left])
-    if node.right != '.':
-        postorder(tree[node.right])
-    print(node.item, end='')
-
-
-tree = {} # dict 로 구현
-for item, left, right in inputs:
-    tree[item] = Node(item, left, right)
-preorder(tree['A'])
-print()
-inorder(tree['A'])
-print()
-postorder(tree['A'])
-
-# print(tree['A'].item, tree['A'].left, tree['A'].right)
-
-# tree dictionary를 통해 노드의 값을 key로 value를 해당 값을 갖는 Node 클래스의 인스턴스로 만들어준다
+# 출력
+print(close)
