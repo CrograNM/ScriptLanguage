@@ -28,14 +28,15 @@ L = []
 for _ in range(N):
     source = tuple(map(int, input().split()))
     L.append(source)
-L.sort(key=lambda x:(x[1],x[0]))
+L.sort(key=lambda x:(x[1],x[0]))    
+# 회의를 끝나는 시간 순서로 정렬하고, 끝나는 시간이 같은 경우 시작 순서로 정렬한다
 #print(L)
 
 count = []
 end = 0
 for l in L:
-    if end <= l[0]:
-        end = l[1]
-        count.append(l)
+    if end <= l[0]:         # 이전 회의 종료 시간보다 회의 시작시간이 크거나 같으면
+        end = l[1]          # 회의 종료 시간이 변경되고
+        count.append(l)     # 배정 리스트에 추가한다.
 #print(count)
 print(len(count))
