@@ -12,10 +12,9 @@ for _ in range(T):
     N = int(input())
     money = 0
     for i in range(N):
-        A,B,C = map(int, input().split())
-        list = [A,B,C]
-        list.sort()
-        if (0 < list[-1]):
-            money += list[-1]
+        L = list(map(int, input().split()))
+        M = max(L)
+        if M > 0:
+            money += M
     print(money)
     pass
