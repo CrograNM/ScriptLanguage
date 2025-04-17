@@ -46,13 +46,6 @@ R
 print('R')
 R = [[ M[r][c] for r in range(A-1, -1, -1) ] for c in range(B)]   # 위에서 B에 해당하는 원소를 c로 썼으니 똑같이 한다
 print2DList(R)
-# num = 1
-# R = [[0]*A for _ in range(B)]
-# for i in range(1, A+1):      # 3
-#     for j in range(B):  # 5
-#         R[j][-i] = num
-#         num+=1
-# print2DList(list)
 
 """
 L
@@ -63,13 +56,7 @@ L
 1 6 11          40 41 42
 """
 print('L')
-num = 1
-L = [[0]*A for _ in range(B)]
-#print(list)
-for i in range(A):           # 3
-    for j in range(1, B+1):  # 5
-        L[-j][i] = num
-        num+=1
+L = [[ M[r][c] for r in range(A) ] for c in range(B-1, -1, -1)]
 print2DList(L)
 
 """
