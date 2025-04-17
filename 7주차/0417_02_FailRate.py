@@ -23,26 +23,25 @@ def solution(N, stages):
 
     # 튜플 (스테이지, 실패율) 리스트 만들기
     list = []
+    info = [0] * (N + 2)
+    for stage in stages:
+        info[stage] += 1
+
     for i in range(1, N+1):
         # i 보다 높은 스테이지 개수 세기
-        i_upper_count = 0
-        for j in range(len(stages)):
-            if stages[j] >= i:
-                i_upper_count += 1
+        i_upper_count = sum(info[i:])
                 
         # 실패율 = i의 개수 / i 이상의 수
         fail_rate = 0
         if i_upper_count != 0:
             fail_rate = counter[i] / i_upper_count
-        list.append((i, fail_rate))
+        list.append( (i, fail_rate) )
 
     # 실패율 우선 내림차순
     list.sort(key= lambda x: x[1], reverse=True)
-    #print(list)
-
-    answer = []
-    for l in list:
-        answer.append(l[0])
+    
+    # 정답 리턴
+    answer = [ l[0] for l in list ]
     return answer
 
 print(solution(5, [2, 1, 2, 6, 2, 4, 3, 3]))
