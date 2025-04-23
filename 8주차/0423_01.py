@@ -2,18 +2,31 @@
     이진 탐색
 """
 
-# 이분탐색 재귀함수
-def binary_search(array, target, start, end):
-    if start > end:
-        return None
-    mid = (start + end) // 2
+# # 이분탐색 재귀함수
+# def binary_search(array, target, start, end):
+#     if start > end:
+#         return None
+#     mid = (start + end) // 2
+#
+#     if array[mid] > target:
+#         return binary_search(array, target, start, mid - 1)
+#     elif array[mid] < target:
+#         return binary_search(array, target, mid + 1, end)
+#     else:
+#         return mid
 
-    if array[mid] > target:
-        return binary_search(array, target, start, mid - 1)
-    elif array[mid] < target:
-        return binary_search(array, target, mid + 1, end)
-    else:
-        return mid
+# 이분탐색 반복문
+def binary_search(array, target, start, end):
+    while start <= end:
+        mid = (start + end) // 2
+
+        if array[mid] > target:
+            end = mid - 1
+        elif array[mid] < target:
+            start = mid + 1
+        else:
+            return mid
+    return None # 찾지 못하고 반복문이 끝나는 경우
 
 # n 원소 개수, target 찾고자 하는 값
 n, target =map(int,input().split())
