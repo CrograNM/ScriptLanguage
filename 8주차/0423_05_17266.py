@@ -1,5 +1,8 @@
 """
     백준 17266 - 어두운 굴다리
+    
+    시간이 촉박한 문제일 때, 입력 수가 많을 떄, 최소 값을 구하는 문제일 때 등
+    이분 탐색을 사용하도록 하자
 """
 
 N = int(input())    # 굴다리의 길이   (1 ≤ N ≤ 100,000)
@@ -23,7 +26,7 @@ def check(H):
         return False
 
 # 이진 탐색 수행
-while start <= end:
+while start <= end:     # start와 end는 구하는 값의 범위인듯
     mid = (start + end) // 2
     if check(mid):  # mid 높이로 굴다리 전체를 비추는가?
         result = mid    # 조건을 만족하면 정답 후보
