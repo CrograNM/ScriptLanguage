@@ -6,16 +6,15 @@
 def solution(n, arr1, arr2):
     answer = []
     for i in range(n):
-        save = bin(arr1[i] | arr2[i])
-        l = list(save[2:])
-        #print(save)
-        map = []
-        for s in l:
-            if s == 0:
-                map.append(' ')
-            elif s == 1:
-                map.append('#')
-        answer.append(map)
+        a = arr1[i] | arr2[i]   # 비트 or 연산
+        s = ''                              
+        for j in range(n):      # a에서 n 비트를 꺼낸다
+            if a & 1:           # 제일 오른쪽 비트가 1이면
+                s = '#' + s
+            else:
+                s = ' ' + s
+            a = a >> 1          # a를 오른쪽 1비트 쉬프트
+        answer.append(s)
     return answer
 
 print(solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]))
