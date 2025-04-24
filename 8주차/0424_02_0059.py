@@ -21,5 +21,5 @@ for c in postfix:
         left = stack.pop()
         bundle = '(' + left + c + right + ')'
         stack.append(bundle)
-        # print(stack)
+    # print(stack)
 print(stack.pop())
