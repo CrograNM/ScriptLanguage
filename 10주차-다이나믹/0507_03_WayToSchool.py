@@ -23,11 +23,18 @@ def solution(m, n, puddles):
     for i in range(2, n+1):
         for j in range(2, m+1):
             if dp[i][j] != -1:
-                dp[i][j] = dp[i - 1][j] + dp[i][j - 1]
+                a = dp[i - 1][j]
+                if a == -1:
+                    a = 0
+                b = dp[i][j - 1]
+                if b == -1:
+                    b = 0
+                dp[i][j] = a + b
 
+    # 출력
+    # for i in range(0, n + 1):
+    #     print(dp[i])
     answer = dp[n][m] % 1000000007
-    for i in range(0, n + 1):
-        print(dp[i])
     return answer
 
 print(solution(4, 3, [[2,2]]))
