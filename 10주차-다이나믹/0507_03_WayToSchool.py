@@ -9,10 +9,6 @@ def solution(m, n, puddles):
         puddleList[r-1][c-1] = 1
 
     dp[0][0] = 1
-    # for i in range(n):
-    #     dp[0][i] = 1
-    # for j in range(n):
-    #     dp[j][0] = 1
 
     for r in range(n):
         for c in range(m):
