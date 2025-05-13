@@ -19,7 +19,6 @@
     list3 ["유저1"] = 받는 메일 횟수 (result) id_list를 통해서 
     list2에서 순회 -> list1 전체 순회를 통해 set에 해당 유저가 있으면 list3에 횟수 추가 
                         and "신고당한 유저"의 횟수도 list3에서 추가
-    
 """
 def solution(id_list, report, k):
     from collections import defaultdict
@@ -47,11 +46,12 @@ def solution(id_list, report, k):
     # 4. id_list 순서대로 결과 반환
     return [mailed_count[user] for user in id_list]
 
+# res : [2, 1, 1, 0]
 print(solution(["muzi", "frodo", "apeach", "neo"],
                ["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"],
                2))
-# res : [2, 1, 1, 0]
 
+# res : [0, 0]
 print(solution(["con", "ryan"],
                ["ryan con", "ryan con", "ryan con", "ryan con"],
                3))
