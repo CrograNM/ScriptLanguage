@@ -17,7 +17,7 @@ input = sys.stdin.readline
 5 6 2
 """
 
-INF = int(1e9) #무한대값
+INF = int(1e9) #무한대값 (10억을 의미)
 n, m = map(int, input().split()) # 노드, 간선 개수
 start = int(input()) # 시작 노드
 
