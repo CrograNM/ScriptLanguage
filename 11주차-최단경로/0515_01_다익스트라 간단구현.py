@@ -81,3 +81,5 @@ for i in range(1, n+1):
         print('INFINITY')
     else:
         print(distance[i])
+        
+# 다음은 우선순위 큐를 사용해 구현
