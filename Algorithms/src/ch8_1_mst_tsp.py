@@ -22,7 +22,7 @@ class TspMst:
     self.g = self.build_graph(self.edges)
     self.mst()
     vis.finish_mst()
-    self.mg = self.build_graph(self.mst_edges) # MST 결과물로 다시 adj-matrix 를 만든다
+    self.mg = self.build_graph(self.mst_edges) # 02_MST 결과물로 다시 adj-matrix 를 만든다
     self.tsp()
     vis.finish()
 
@@ -40,7 +40,7 @@ class TspMst:
       v, w = self.weights.popitem()      # 알려진 거리가 가장 가까운 점(v)과 거리(w) 를 얻는다
       u = self.origins[v]                # v 에 가려면 u 를 들러서 가야 한다는 것을 알아낸다
       if u != v:                         # v 가 출발점이 아니라면
-        self.mst_edges.append((u, v, w))   # (u,v,w) 를 MST 에 추가한다
+        self.mst_edges.append((u, v, w))   # (u,v,w) 를 02_MST 에 추가한다
         self.completed.add(v)
       vis.fix(v, u)
 
@@ -92,7 +92,7 @@ class TspMst:
     self.seq.append(self.start_index)
     vis.update_shortcut(self.start_index)
 
-vis = Visualizer('TSP using MST')
+vis = Visualizer('TSP using 02_MST')
 while True:
   alg = TspMst(dsc.cities, dsc.edges)
   vis.setup(alg)

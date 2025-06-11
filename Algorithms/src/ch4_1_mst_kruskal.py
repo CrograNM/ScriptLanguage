@@ -44,7 +44,7 @@ def main():
   vis.finish()
 
 if __name__ == '__main__':
-  vis = Visualizer('MST - Kruskal')
+  vis = Visualizer('02_MST - Kruskal')
   while True:
     cities, edges = dsc.cities, dsc.edges
     vis.setup(vis.get_main_module())

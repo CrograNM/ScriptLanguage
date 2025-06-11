@@ -35,7 +35,7 @@ def dijkstra(start):
     distance[start] = 0
     heapq.heappush(q,(0, start)) # (거리, 노드)의 쌍을 삽입
     while q:    # q가 빌 때까지 반복
-        # 우선순위큐(최소 힙)에서 최단거리 노드 정보를 꺼낸다.
+        # 01_우선순위큐(최소 힙)에서 최단거리 노드 정보를 꺼낸다.
         dist, now = heapq.heappop(q)
         # 현재 노드가 이미 처리된 적이 있다면 무시
         if distance[now] < dist:

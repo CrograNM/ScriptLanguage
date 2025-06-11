@@ -18,7 +18,7 @@ for _ in range(M):
 
 answer = [1] * (N+1) # 정답이 입력될 리스트
 
-def topology_sort(): # 위상정렬 구현
+def topology_sort(): # 03_위상정렬 구현
     result = [] # 이 값은 위상 정렬 된 리스트
     q = deque()
     for i in range(1, N+1):
